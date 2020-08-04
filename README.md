@@ -8,7 +8,7 @@
     - H2 Database
 * Extract file in folder that not has .git folder
 * `gradlew`
-* check compiler: `set javac = *path java folder*` 
-* set java location: `set JAVA_HOME = *path java folder*`
+* check compiler: `set javac = <path java folder>` 
+* set java location: `set JAVA_HOME = <path java folder>`
 * `gradlew test`
 * start: `gradlew bootRun`
