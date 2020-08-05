@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -33,7 +34,8 @@ public class UserController {
 
     @GetMapping("/users/{id}")
     public UsersResponse getUserById(@PathVariable int id) {
-        return new UsersResponse(id,"User "+id);
+        Optional<User> users = userRepository.findById(id);
+        return new UsersResponse(users.get().getId(), users.get().getName());
     }
 
     @PostMapping("/users")
