@@ -5,11 +5,11 @@ public class UsersResponse {
     private String name;
 
     public UsersResponse(int id, String name) {
-        setId(id);
-        setName(name);
+        this.id = id;
+        this.name = name;
     }
 
-    // PO (Plain Old Java Object)
+    // PO (Plain Old Java Object: property,getter,setter)
     // Getter/Setter methods
     public int getId() {
         return id;
