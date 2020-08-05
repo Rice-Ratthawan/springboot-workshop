@@ -5,10 +5,9 @@ public class UsersResponse {
     private String name;
     private int page;
 
-    public UsersResponse(int id, String name, int page) {
+    public UsersResponse(int id, String name) {
         this.id = id;
         this.name = name;
-        this.page = page;
     }
 
     // PO (Plain Old Java Object: property,getter,setter)
@@ -29,17 +28,4 @@ public class UsersResponse {
         this.name = name;
     }
 
-    public int getPage() {
-        return page;
-    }
-
-    public int setPage(int page) {
-        if(page == Integer.parseInt(null)) {
-            return this.page = 10;
-        }
-        else{
-            this.page = page;
-        }
-        return page;
-    }
 }
