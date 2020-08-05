@@ -16,6 +16,10 @@ public class PagingResponse {
         this.usersResponseList = usersResponseList;
     }
 
+    public List<UsersResponse> getUsersResponseList() {
+        return usersResponseList;
+    }
+
     public int getPage() {
         return page;
     }
