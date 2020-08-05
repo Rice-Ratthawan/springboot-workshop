@@ -22,7 +22,7 @@ public class UserController {
 
         List<UsersResponse> usersResponseList = new ArrayList<>();
 
-        List<User> users = (List<User>) userRepository.findAll();
+        Iterable<User> users = userRepository.findAll();
         for(User user:users) {
             usersResponseList.add(new UsersResponse(user.getId(), user.getName()));
         }
