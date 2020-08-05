@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 import java.util.ArrayList;
@@ -32,5 +29,8 @@ public class UserController {
         return new UsersResponse(id,"User "+id);
     }
 
-
+    @PostMapping("/users")
+    public UsersResponse createNewUser(@RequestBody NewUserRequest request) {
+        return new UsersResponse(0,request.getName()+request.getAge());
+    }
 }
