@@ -5,12 +5,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.List;
 
-@JsonPropertyOrder({"page_no","item_per_page","users"})
+@JsonPropertyOrder({"page","item_per_page","users"})
 public class PagingResponse {
     @JsonProperty("users")
     private List<UsersResponse> usersResponseList;
 
-    @JsonProperty("page_no")
     private int page;
 
     @JsonProperty("item_per_page")
