@@ -14,6 +14,17 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @PostMapping("/users")
+    public UsersResponse createNewUser(@RequestBody NewUserRequest request) {
+        // Validate input
+        // Create new user into database
+        User user = new User();
+        user.setName(request.getName());
+        user.setAge(request.getAge());
+        user = userRepository.save(user);
+        return new UsersResponse(user.getId(),user.getName() +user.getAge());
+    }
+
     @GetMapping("/users")
     public PagingResponse getAllUser(
             @RequestParam(defaultValue = "1") int page,
@@ -25,7 +36,7 @@ public class UserController {
 
         Iterable<User> users = userRepository.findAll();
         for(User user:users) {
-            usersResponseList.add(new UsersResponse(user.getId(), user.getName()));
+            usersResponseList.add(new UsersResponse(user.getId(), user.getName(), user.getAge()));
         }
 
         pagingResponse.setUsersResponse(usersResponseList);
@@ -36,16 +47,5 @@ public class UserController {
     public UsersResponse getUserById(@PathVariable int id) {
         Optional<User> users = userRepository.findById(id);
         return new UsersResponse(users.get().getId(), users.get().getName());
-    }
-
-    @PostMapping("/users")
-    public UsersResponse createNewUser(@RequestBody NewUserRequest request) {
-        // Validate input
-        // Create new user into database
-        User user = new User();
-        user.setName(request.getName());
-        user.setAge(request.getAge());
-        user = userRepository.save(user);
-        return new UsersResponse(user.getId(),user.getName() +user.getAge());
     }
 }
