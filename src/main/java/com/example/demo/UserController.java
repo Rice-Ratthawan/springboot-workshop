@@ -35,10 +35,10 @@ public class UserController {
 
         List<UsersResponse> usersResponseList = new ArrayList<>();
 
-        // Pagination
+        // Pagination(JPA): POST then http://localhost:8080/users?page=1&item_per_page=6
         Pageable pageable = PageRequest.of(page, itemPerPage);
 
-        Iterable<User> users = userRepository.findAll();
+        Iterable<User> users = userRepository.findAll(pageable);
         for(User user:users) {
             usersResponseList.add(new UsersResponse(user.getId(), user.getName(), user.getAge()));
         }
