@@ -42,6 +42,11 @@ public interface UserRepository extends PagingAndSortingRepository<User, Integer
 Pageable pageable = PageRequest.of(page, itemPerPage);
 Iterable<User> users = userRepository.findAll(pageable);
 ```
+* POST data by Postman
+* Test
+    - open url: http://localhost:8080/users?page=1&item_per_page=5  => page1 will show 5 items(1-5)
+    - if change http://localhost:8080/users?page=2&item_per_page=5  => page2 will show 5 items(6-10)
+    
 ## Resource
 * [Spring Boot](https://spring.io/projects/spring-boot)
 * [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
