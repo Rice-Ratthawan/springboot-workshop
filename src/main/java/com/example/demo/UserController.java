@@ -1,9 +1,10 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +34,9 @@ public class UserController {
         PagingResponse pagingResponse = new PagingResponse(page,itemPerPage);
 
         List<UsersResponse> usersResponseList = new ArrayList<>();
+
+        // Pagination
+        Pageable pageable = PageRequest.of(page, itemPerPage);
 
         Iterable<User> users = userRepository.findAll();
         for(User user:users) {
